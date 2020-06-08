@@ -1,0 +1,38 @@
+<section class="hero is-success">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Todo 一覧
+      </h1>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-multiline">
+      <% @todos.each do |todo| %>
+        <div class="column is-4">
+          <div class="card">
+            <div class="card-content">
+              <div class="media">
+                <div class="media-content">
+                  <div class="title"><%=link_to todo.user.username, user_path(todo.user) %></div>
+                </div>
+                <div class="media-left">
+                  <figure class="image is-48x48">
+                    <%= attachment_image_tag todo.user, :profile_image, fallback: "no-image.png", class: "profile_image" %>
+                  </figure>
+                </div>
+              </div>
+
+              <div class="content">
+                <time><%= todo.updated_at.strftime("%Y-%m-%d %H:%M") %></time>更新
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
