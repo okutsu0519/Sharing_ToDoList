@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: Sharing_ToDoList_production
-  username: Sharing_ToDoList
-  password: <%= ENV['SHARING_TODOLIST_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
