@@ -1,24 +1,38 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# アプリケーション概要
+個人でも複数人でも使用可能のToDoListです。
+ビジネスシーンでの使用を想定して作りました。
 
-Things you may want to cover:
+# 機能一覧
+●ユーザー登録、ログイン機能(ウィザード形式)
+●ToDo投稿、編集、削除機能
 
-* Ruby version
 
-* System dependencies
+## Usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|id|integer|null: false|
+|username|string|null: false, unique: true, index|
+|profile|text|null: false|
+|profile_image_id|string|null: false|
+|email|string|null: false|
+|reset_password_token|string|null: false|
+|reset_password_sent_at|datetime|null: false|
+|remember_created_at|datetime|null: false|
+|created_at|string|null: false|
+|updated_at|string|null: false|
+### Association
+- has_many :todos
 
-* Configuration
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## ToDosテーブル
+|Column|Type|Options|
+|------|----|-------|
+|id|integer|null: false|
+|title|string|null: false|
+|body|text|null: false|
+|image_id|integer|null: false|
+|user_id|integer|foreign_key: true, null: false|
+### Association
+- belongs_to :user
